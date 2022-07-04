@@ -1,35 +1,42 @@
 /*
-Binary Search the Word from Word List
-a. Desc -> Read in a list of words from File. Then prompt the user to enter a word to
-search the list. The program reports if the search word is found in the list.
-b. I/P -> read in the list words comma separated from a File and then enter the word
-to be searched
-c. Logic -> Use Arrays to sort the word list and then do the binary search
-d. O/P -> Print the result if the word is found or not
+Insertion Sort
+a. Desc -> Reads in strings and prints them in sorted order using insertion sort.
+b. I/P -> read in the list words
+c. Logic -> Use Insertion Sort to sort the words in the String array
+d. O/P -> Print the Sorted List
  */
 package com.bridgelabz;
 
 public class AlgorithmProblems {
-    static String[] a = { "AB", "BC", "CD", "DE", "EF", "FG", "." };
-    static int min = 0;
-    static int max = a.length - 1;
-    static int mid;
-    static String key = "EF";
-    //main method
-    public static void main (String[]args){
-        System.out.println("Key Found at : " + stringBinarySearch() + " position");
-    }
-    public static int stringBinarySearch () {
-        while (min <= max) {
-            mid = (min + max) / 2;
-            if (a[mid].compareTo(key) < 0) {
-                min = mid + 1;
-            } else if (a[mid].compareTo(key) > 0) {
-                max = mid - 1;
-            } else {
-                return mid;
+    /*Method to sort array using insertion sort*/
+    void sort(int arr[]) {
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
             }
+            arr[j + 1] = key;
         }
-        return -1;
+    }
+    /* A method to print array of size n*/
+    static void printArray(int arr[]) {
+        int n = arr.length;
+        for
+            (int i = 0; i < n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+    // Main Method
+    public static void main(String args[]) {
+        int arr[] = { 4, 8, 77, 106, 1, 6, 99 };
+        AlgorithmProblems ob = new AlgorithmProblems(); //creating object
+        ob.sort(arr); //sorting the array
+        printArray(arr);
     }
 }
