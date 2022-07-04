@@ -1,31 +1,27 @@
 /*
-Bubble Sort
-a. Desc -> Reads in integers prints them in sorted order using Bubble Sort
-b. I/P -> read in the list ints
-c. O/P -> Print the Sorted List
+Take a range of 0 - 1000 Numbers and find the Prime numbers in that range.
  */
 package com.bridgelabz;
-
 public class AlgorithmProblems {
-    //Bubble sort method
-    public static void bubbleSort(int [] sort_arr, int len){
-        for (int i=0;i<len-1;++i){
-            for(int j=0;j<len-i-1; ++j){
-                if(sort_arr[j+1]<sort_arr[j]){
-                    int swap = sort_arr[j];
-                    sort_arr[j] = sort_arr[j+1];
-                    sort_arr[j+1] = swap;
-                }
-            }
-        }
+    //Main method
+    public static void main (String[]args) {
+        int lower = 0, upper = 1000; //range from 0 to 1000
+        for (int i = lower; i <= upper; i++)
+            if (isPrime (i))
+                System.out.println (i);
     }
-    public static void main( String args[] ) {
-        int [] array = {5, 11, 6, 3, 22, 99, 110};
-        int len = array.length; //length of the array
-        bubbleSort(array,len); //calling the method
-
-        for(int i = 0; i<len; ++i){
-            System.out.print(array[i] + " ");
+    //Method to check prime
+    static boolean isPrime (int n) {
+        int count = 0;
+        // 0, 1 negative numbers are not prime
+        if (n < 2)
+            return false;
+        // checking the number of divisors b/w 1 and the number n-1
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0)
+                return false;
         }
+        // if the number is prime
+        return true;
     }
 }
